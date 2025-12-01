@@ -223,3 +223,16 @@ body {
 #contact a {
   color: var(--accent);
 }
+/* ✅ Mobile scrolling fix */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .terminal {
+    height: auto;
+    min-height: 90vh;
+    overflow-y: auto;
+  }
+}

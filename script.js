@@ -1,3 +1,6 @@
+// TranquilinoOS — Charlie Tranquilino Edition
+// © 2025 Charlie Tranquilino
+
 // ------------------------ BOOT SETUP ------------------------
 
 // Main boot steps (full OS boot)

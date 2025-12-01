@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<title>TranquilinoOS — Charlie Tranquilino Edition v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- CLICK TO ENTER SCREEN -->
+  <div id="enter-screen" class="enter-screen">
+    <div class="enter-box">
+<div class="enter-title">TRANQUILINO OS</div>
+<div class="enter-sub">CHARLIE TRANQUILINO EDITION V1.0</div>
+      <div class="enter-sub">SYSTEM LOCKED</div>
+      <button id="enter-btn">CLICK TO ENTER</button>
+    </div>
+  </div>
+
+  <!-- TERMINAL SYSTEM -->
+  <div class="terminal">
+    <div id="boot-output" class="boot-output"></div>
+
+    <div id="main-ui" class="main-ui hidden">
+
+      <div class="terminal-line">
+        <span class="prompt">&gt;</span> System Unlocked. Welcome to 
+        <span class="accent">TranquilinoOS</span>.
+      </div>
+
+      <div class="terminal-line">
+        <span class="prompt">&gt;</span> Available Commands:
+      </div>
+
+     <div class="command-list">
+  <button class="command-btn" data-target="summary">Summary</button>
+  <button class="command-btn" data-target="modules">Modules</button>
+  <button class="command-btn" data-target="processes">Processes</button>
+  <button class="command-btn" data-target="history">History</button>
+  <button class="command-btn" data-target="logs">Logs</button>
+  <button class="command-btn" data-target="contact">Contact</button>
+</div>
+
+
+      <!-- SUMMARY -->
+      <div id="summary" class="panel hidden">
+        <div class="panel-title">[ PROFILE SUMMARY ]</div>
+        <p>
+          IT Professional with 11+ years in customer-facing roles focused on
+          Endpoint Support and System Administration. Specializing in Intune,
+          Azure AD, device provisioning, VOIP Systems, and hardware Lifecycle Refresh
+          work. Strong background in Freshservice and ServiceNow with knowledge
+          of Group Policy, asset workflows, and Security best practices.
+        </p>
+      </div>
+
+      <!-- MODULES -->
+      <div id="modules" class="panel hidden">
+        <div class="panel-title">[ SKILL MODULES ]</div>
+        <ul>
+          <li>Endpoint Management — Intune, Azure AD, Windows Autopilot</li>
+          <li>Directory Services — Active Directory, Group Policy User & Access Administration</li>
+          <li>IT Support — Freshservice, ServiceNow, Troubleshooting</li>
+          <li>Networking & VOIP — 8x8, POE, DNS/DHCP</li>
+          <li>Hardware Lifecycle — Imaging, Deployment, Inventory</li>
+          <li>Security — MFA, PXE, Compliance & Documentation</li>
+        </ul>
+      </div>
+
+     <!-- PROCESSES -->
+<div id="processes" class="panel hidden">
+  <div class="panel-title">[ ACTIVE PROCESSES ]</div>
+  <ul>
+    <li>Nov 2025 - Present — Help Desk Analyst I — Champion Home Builders Inc.</li>
+    <li>Feb 2025 - Present — Technical Operations Lead — Mari-Go</li>
+  </ul>
+</div>
+
+    <!-- HISTORY -->
+<div id="history" class="panel hidden">
+  <div class="panel-title">[ PAST PROCESSES ]</div>
+  <ul>
+    <li>2024–2025 — IT Lifecycle Refresh — Corewell Health / MCPC</li>
+    <li>2024-2025 — Lead Animation Instructor — Animation Discovery Studio</li>
+  </ul>
+</div>
+
+
+
+  <!-- LOGS -->
+<div id="logs" class="panel hidden">
+  <div class="panel-title">[ SYSTEM LOGS ]</div>
+  <ul>
+    <li>
+      <button class="log-link" data-role="helpdesk">
+        Nov 2025 – Present — Help Desk Analyst (Champion Home Builders)
+      </button>
+    </li>
+    <li>
+      <button class="log-link" data-role="techops">
+        Feb 2025 – Present — Technical Operations Lead (Mari-Go)
+      </button>
+    </li>
+    <li>
+      <button class="log-link" data-role="lifecycle">
+        Oct 2024 – May 2025 — IT Lifecycle Refresh (Corewell Health / MCPC)
+      </button>
+    </li>
+    <li>
+      <button class="log-link" data-role="animation">
+        Jul 2024 – May 2025 — Lead Animation Instructor (Animation Discovery Studio)
+      </button>
+    </li>
+  </ul>
+
+  <!-- DETAILS: ONLY ONE SHOWN AT A TIME -->
+
+  <div id="log-helpdesk" class="log-details hidden">
+    <ul>
+      <li>-Provision, decommission, and reprovision Windows endpoints using Microsoft Intune, Azure AD, and Autopilot via USB-based deployment workflows for secure user onboarding</li>
+      <li>-Administer hybrid identity operations across Active Directory and Microsoft Azure AD for user access changes, device cleanup, and offboarding actions</li>
+      <li>-Configure, onboard, and deploy enterprise devices into the corporate environment, enrolling scanners into Microsoft Intune for centralized device management and support</li>
+      <li>-Resolve Tier 1–2 hardware, software, and access incidents through Freshservice, supporting endpoint failures, login issues, and application access</li>
+      <li>-Administer and troubleshoot enterprise VoIP services in 8x8, including softphone setups, and call routing</li>
+    </ul>
+  </div>
+
+  <div id="log-techops" class="log-details hidden">
+    <ul>
+      <li>-Led coordination between technical, design, and operations teams to align automation workflows with business objectives and improve system efficiency</li>
+      <li>-Supported DeepSeek AI integration, updating documentation, version control, and knowledge base indexing</li>
+      <li>-Developed clear documentation and SOPs based on data collected from Jira tickets and backlog trends</li>
+      <li>-Oversaw ticket lifecycle in Jira, ensuring issues were assigned, escalated, and resolved efficiently</li>
+    </ul>
+  </div>
+
+  <div id="log-lifecycle" class="log-details hidden">
+    <ul>
+      <li>-Imaged and deployed 1,000+ desktops, laptops, and AIO devices using PXE boot/USB imaging tools, ensuring devices were securely integrated into the hospital network and aligned with HIPAA compliance standards</li>
+      <li>-Managed IT workflows and asset lifecycles in ServiceNow, including CMDB audits, configuration logs, and decommissioning of outdated systems to reduce security risk from unsupported devices</li>
+      <li>-Applied elevated administrative access and generated compliance reports for audits, supporting adherence to hospital security policies and minimizing risk of unauthorized access</li>
+      <li>-Collaborated with clinical staff and administrators to schedule secure refreshes and apply security patches, ensuring devices were updated with the latest protections while minimizing downtime</li>
+    </ul>
+  </div>
+
+  <div id="log-animation" class="log-details hidden">
+    <ul>
+      <li>-Lead and facilitate animation workshops assisting other instructors and ensuring compliance with studio standards and curriculum</li>
+      <li>-Ensure all tools and resources are prepared and functional performing inventory checks and reporting any maintenance needs</li>
+      <li>-Collaborate with the team on projects and ensure all projects align with the studio's quality and creative standards providing feedback and support to instructors enhancing the learning experience for students</li>
+      <li>-Assist at networking events to help establish new business opportunities and connections</li>
+    </ul>
+  </div>
+
+
+      <!-- CONTACT -->
+      <div id="contact" class="panel hidden">
+        <div class="panel-title">[ Contact CHANNEL ]</div>
+        <p>
+          Name: Charlie Tranquilino<br>
+          Location: Romulus, MI<br>
+          Email: CTranq323@gmail.com<br>
+          LinkedIn: linkedin.com/in/charlie-tranquilino
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

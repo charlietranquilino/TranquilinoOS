@@ -1,61 +1,118 @@
 // TranquilinoOS — Charlie Tranquilino Edition
-// © 2025 Charlie Tranquilino
+// Text-only kernels, no loading bars
 
 // ------------------------ BOOT SETUP ------------------------
 
 // Main boot steps (full OS boot)
 const bootSteps = [
-  { label: "Injecting kernel: customer_facing_experience.kext", time: 260 },
-  { label: "Injecting kernel: endpoint_support_engine.kext", time: 260 },
-  { label: "Injecting kernel: system_administration_core.kext", time: 260 },
+  { label: "Injecting kernel: customer_facing_experience.kext" },
+  { label: "Injecting kernel: endpoint_support_engine.kext" },
+  { label: "Injecting kernel: system_administration_core.kext" },
 
-  { label: "Uploading module: desktop_engine.champion_home_builders", time: 230 },
-  { label: "Uploading module: tech_ops_lead.mari_go", time: 230 },
-  { label: "Uploading module: it_lifecycle.corewell_health", time: 230 },
-  { label: "Uploading module: it_support_training.per_scholas", time: 230 },
-  { label: "Uploading module: data_analytics_training.npower", time: 230 },
+  { label: "Uploading module: desktop_engine.champion_home_builders" },
+  { label: "Uploading module: tech_ops_lead.mari_go" },
+  { label: "Uploading module: it_lifecycle.corewell_health" },
+  { label: "Uploading module: it_support_training.per_scholas" },
+  { label: "Uploading module: data_analytics_training.npower" },
 
-  { label: "Loading driver: intune_device_provisioning.sys", time: 220 },
-  { label: "Loading driver: azure_ad_identity.sys", time: 220 },
-  { label: "Loading driver: windows_autopilot_boot.sys", time: 220 },
+  { label: "Loading driver: intune_device_provisioning.sys" },
+  { label: "Loading driver: azure_ad_identity.sys" },
+  { label: "Loading driver: windows_autopilot_boot.sys" },
 
-  { label: "Starting service: freshservice_daemon", time: 220 },
-  { label: "Starting service: servicenow_assetd", time: 220 },
-  { label: "Starting service: ticket_routing.engine", time: 220 },
+  { label: "Starting service: freshservice_daemon" },
+  { label: "Starting service: servicenow_assetd" },
+  { label: "Starting service: ticket_routing.engine" },
 
-  { label: "Mounting volume: imaging_pipeline.pxe", time: 220 },
-  { label: "Mounting volume: asset_tracking.index", time: 220 },
-  { label: "Mounting volume: inventory_management.db", time: 220 },
+  { label: "Mounting volume: imaging_pipeline.pxe" },
+  { label: "Mounting volume: asset_tracking.index" },
+  { label: "Mounting volume: inventory_management.db" },
 
-  { label: "Enabling security surface: mfa_guardian", time: 220 },
-  { label: "Enabling security surface: access_controls.policy", time: 220 },
+  { label: "Enabling security surface: mfa_guardian" },
+  { label: "Enabling security surface: access_controls.policy" },
 
-  { label: "Injecting module: user_training_and_support", time: 210 },
-  { label: "Injecting module: cross_team_collaboration", time: 210 },
-  { label: "Injecting module: documentation_and_sops", time: 210 },
+  { label: "Injecting module: user_training_and_support" },
+  { label: "Injecting module: cross_team_collaboration" },
+  { label: "Injecting module: documentation_and_sops" },
 
-  { label: "Patching subsystem: voip_8x8_callstack.so", time: 210 },
-  { label: "Patching subsystem: poe_device_controller.so", time: 210 },
-  { label: "Patching subsystem: basic_networking_dns_dhcp.so", time: 210 },
+  { label: "Patching subsystem: voip_8x8_callstack.so" },
+  { label: "Patching subsystem: poe_device_controller.so" },
+  { label: "Patching subsystem: basic_networking_dns_dhcp.so" },
 
-  { label: "Loading daemon: asset_handoffd", time: 200 },
-  { label: "Loading daemon: clinical_support_bridge", time: 200 },
+  { label: "Loading daemon: asset_handoffd" },
+  { label: "Loading daemon: clinical_support_bridge" },
 
-  { label: "Optimizing cache: ticket_history.idx", time: 200 },
-  { label: "Optimizing cache: endpoint_profiles.cache", time: 200 }
+  { label: "Optimizing cache: ticket_history.idx" },
+  { label: "Optimizing cache: endpoint_profiles.cache" }
 ];
 
-// Mini steps that run every time you click a command
-const moduleSteps = [
-  { verb: "loading module", suffix: ".core", time: 180 },
-  { verb: "mounting view", suffix: ".view", time: 170 },
-  { verb: "starting service", suffix: ".service", time: 160 }
-];
+// Per-panel kernels for button clicks (NO [COMPLETE])
+const panelKernels = {
+  summary: [
+    "Loading profile_summary.core",
+    "Aggregating experience.timeline",
+    "Indexing customer-facing_background.db",
+    "Optimizing strengths_matrix.cache",
+    "Syncing career_snapshot.view",
+    "Verifying profile_integrity.checksum"
+  ],
+  modules: [
+    "Loading skill_modules.registry",
+    "Mounting endpoint_management.stack",
+    "Resolving directory_services.mapping",
+    "Linking troubleshooting_playbook.pkg",
+    "Refreshing security_controls.index",
+    "Updating tools_and_platforms.catalog"
+  ],
+  processes: [
+    "Querying active_processes.table",
+    "Syncing current_roles.status",
+    "Linking employer_records.chain",
+    "Validating uptime_for_roles.monitor",
+    "Rebuilding active_stack.snapshot",
+    "Confirming process_health.ok"
+  ],
+  history: [
+    "Loading history_archive.core",
+    "Replaying past_deployments.log",
+    "Reading contract_timeline.db",
+    "Reconstructing previous_environments.view",
+    "Syncing legacy_skill_usage.cache",
+    "Compressing historical_context.bundle"
+  ],
+  logs: [
+    "Streaming system_logs.career",
+    "Indexing incident_history.events",
+    "Linking ticketing_system.records",
+    "Validating accomplishments.audit",
+    "Refreshing metrics_and_impact.index",
+    "Archiving log_rollup.snapshot"
+  ],
+  contact: [
+    "Resolving contact_routes.dns",
+    "Loading communication_channels.cfg",
+    "Verifying availability_window.schedule",
+    "Mounting social_presence.viewport",
+    "Encrypting outbound_contact_packet",
+    "Queuing response_pipeline.ready"
+  ],
+  default: [
+    "Loading generic_module.core",
+    "Refreshing generic_cache.index",
+    "Syncing generic_state.status"
+  ]
+};
+
+// ------------------------ DOM HOOKS ------------------------
 
 const bootOutput  = document.getElementById("boot-output");
 const mainUI      = document.getElementById("main-ui");
 const enterScreen = document.getElementById("enter-screen");
 const enterBtn    = document.getElementById("enter-btn");
+const bootLogo    = document.getElementById("boot-logo");
+
+const buttons   = document.querySelectorAll(".command-btn");
+const logLinks  = document.querySelectorAll(".log-link");
+const logPanels = document.querySelectorAll(".log-details");
 
 // ------------------------ HELPERS ------------------------
 
@@ -64,10 +121,7 @@ function addLine(text, parent = bootOutput) {
   line.className = "boot-line";
   line.textContent = text;
   parent.appendChild(line);
-
-  // always behave like a real terminal: stick to bottom
   parent.scrollTop = parent.scrollHeight;
-
   return line;
 }
 
@@ -75,140 +129,137 @@ function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function animateBar(element, duration) {
-  return new Promise(resolve => {
-    let progress = 0;
-    const ticks = 8;                       // fewer ticks = snappier
-    const interval = duration / ticks;
-
-    const timer = setInterval(() => {
-      progress += Math.random() * (100 / ticks) * 1.4;
-      if (progress >= 100) progress = 100;
-
-      const blocks = Math.floor(progress / 5); // 20 blocks
-      const bar =
-        "[" +
-        "#".repeat(blocks) +
-        "-".repeat(20 - blocks) +
-        `] ${Math.floor(progress)}%`;
-
-      element.textContent = bar;
-
-      if (progress >= 100) {
-        clearInterval(timer);
-        resolve();
-      }
-    }, interval);
-  });
+function capitalize(word) {
+  if (!word) return "";
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 // ------------------------ MAIN BOOT SEQUENCE ------------------------
 
 async function runBootSequence() {
+  if (bootLogo) bootLogo.classList.remove("hidden");
   bootOutput.classList.remove("hidden");
   bootOutput.innerHTML = "";
 
+  // Quick intro
   addLine("> Booting TranquilinoOS — Charlie Tranquilino Edition v1.0...");
-  addLine("> Entering verbose mode...");
+  addLine("> Entering Verbose Mode...");
   addLine("");
-  await wait(160);
+  await wait(300);
 
-  addLine("> Scanning hardware profile...");
-  addLine("[OK] Human multi-core processor detected");
-  addLine("[OK] High-capacity pattern recognition online");
-  addLine("[OK] Network adapters configured for remote support");
+  addLine("> Initializing hardware profile...");
+  addLine(" Detecting CPU, memory, and adapters...");
+  addLine(" Validating input and display channels...");
   addLine("");
-  await wait(160);
+  await wait(400);
 
-  // process boot steps in batches of 1–3, clearing between so it never feels crowded
-  let i = 0;
-  while (i < bootSteps.length) {
-    const remaining = bootSteps.length - i;
-    let batchSize = Math.floor(Math.random() * 3) + 1; // 1–3
-    if (batchSize > remaining) batchSize = remaining;
+  // Extra verbose templates used for all pages
+  const verboseMessages = [
+    " Allocating memory blocks...",
+    " Resolving kernel dependencies...",
+    " Linking runtime symbols...",
+    " Verifying execution state...",
+    " Registering kernel hooks...",
+    " Syncing configuration from cache...",
+    " Flushing stale handles...",
+    " Updating internal routing tables...",
+    " Checking security posture...",
+    " Confirming I/O channels...",
+    " Attaching process scheduler...",
+    " Normalizing environment variables...",
+    " Preparing diagnostics stream..."
+  ];
 
+  const totalPages = 16;          // ~16 screens of logs
+  const delayPerPage = 220;       // ms between pages
+
+  for (let page = 0; page < totalPages; page++) {
+    // wipe the previous "screen"
     bootOutput.innerHTML = "";
-    addLine("> Continuing verbose boot...");
+
+    // header for this page (optional)
+    addLine("> Verbose log page " + (page + 1) + " of " + totalPages);
     addLine("");
 
-    for (let b = 0; b < batchSize; b++) {
-      const step = bootSteps[i];
+    // number of lines this page
+    const linesThisPage = 12 + Math.floor(Math.random() * 10); // 12–21 lines
 
-      addLine("> " + step.label);
-      const barLine = addLine("[--------------------] 0%");
+    for (let i = 0; i < linesThisPage; i++) {
+      let lineText;
 
-      // sometimes jump straight to 100% for chaos
-      if (Math.random() < 0.3) {
-        barLine.textContent = "[####################] 100%";
-        await wait(60);
+      if (Math.random() < 0.45) {
+        // ~45% of the time, pull from your real boot steps
+        const step = bootSteps[Math.floor(Math.random() * bootSteps.length)];
+        lineText = " " + step.label;
       } else {
-        await animateBar(barLine, step.time);
+        // otherwise use a generic verbose line
+        lineText = verboseMessages[Math.floor(Math.random() * verboseMessages.length)];
       }
 
-      addLine("[OK]");
-      addLine("");
-      await wait(40);
-      i++;
+      addLine(lineText);
     }
 
-    await wait(100);
+    // brief pause before wiping and drawing the next "page"
+    await wait(delayPerPage);
   }
 
-  // finalization
+  // Finalization block
   bootOutput.innerHTML = "";
-  addLine("> Finalizing boot sequence...");
-  await wait(180);
-  addLine("[OK] Resume kernels successfully mapped");
-  addLine("[OK] Skill modules loaded into memory");
-  addLine("[OK] Processes ready for execution");
-  await wait(200);
+  addLine(" Finalizing boot sequence...");
+  await wait(250);
+  addLine(" Mapping resume kernels into memory space...");
+  addLine(" Synchronizing skill modules across sessions...");
+  addLine(" Validating process table and active context...");
+  await wait(350);
+  addLine(" System state stabilized");
+  addLine("");
 
-  // show unlocked, then hide console and reveal UI
-  await wait(180);
-  bootOutput.innerHTML = "";
-  addLine("> System unlocked.");
-  addLine("> Awaiting command...");
+  await wait(300);
+  addLine("> System Unlocked.");
+  addLine("> Awaiting Command...");
   addLine("");
 
   setTimeout(() => {
-    bootOutput.classList.add("hidden");   // hide kernel console completely
-    mainUI.classList.remove("hidden");    // show the command UI
+    bootOutput.classList.add("hidden");
+    if (bootLogo) bootLogo.classList.add("hidden");
+    mainUI.classList.remove("hidden");
   }, 400);
 }
+
 
 // ------------------------ PER-CLICK MINI LOADERS ------------------------
 
 async function loadModuleForPanel(label, panel) {
-  // show console for this load
+  // hide UI, show kernels only
+  mainUI.classList.add("hidden");
   bootOutput.classList.remove("hidden");
   bootOutput.innerHTML = "";
 
-  // mini 3-step loader
-  for (const step of moduleSteps) {
-    addLine(`> ${step.verb}: ${label}${step.suffix}`);
-    const barLine = addLine("[--------------------] 0%");
+  const niceLabel = capitalize(label);
+  const idSlug = label.replace(/\s+/g, "_").toLowerCase();
 
-    if (Math.random() < 0.3) {
-      barLine.textContent = "[####################] 100%";
-      await wait(60);
-    } else {
-      await animateBar(barLine, step.time);
-    }
+  addLine("> Processing Command: " + niceLabel);
+  addLine("");
 
-    addLine("[OK]");
-    addLine("");
-    await wait(40);
+  // pick kernels based on which button was pressed
+  const kernels = panelKernels[idSlug] || panelKernels.default;
+
+  // run through those kernels quickly WITHOUT [COMPLETE]
+  for (const text of kernels) {
+    addLine("> " + text);
+    await wait(70);   // jailbreak-fast
   }
 
-  // show requested panel
+  // show correct panel
   document.querySelectorAll(".panel").forEach(p =>
     p.classList.add("hidden")
   );
   panel.classList.remove("hidden");
 
-  // hide console again after a beat
+  // bring UI back, hide kernels again
   setTimeout(() => {
     bootOutput.classList.add("hidden");
+    mainUI.classList.remove("hidden");
   }, 200);
 }
 
@@ -221,35 +272,32 @@ enterBtn.addEventListener("click", () => {
 });
 
 // command buttons (summary, modules, processes, history, logs, contact)
-const buttons = document.querySelectorAll(".command-btn");
-// ------------------------ LOG DETAIL TOGGLES ------------------------
-
-const logLinks   = document.querySelectorAll(".log-link");
-const logPanels  = document.querySelectorAll(".log-details");
-
-logLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    const role = link.getAttribute("data-role");
-    const targetId = "log-" + role;
-
-    // hide all detail blocks
-    logPanels.forEach(p => p.classList.add("hidden"));
-
-    // show only the matching one
-    const targetPanel = document.getElementById(targetId);
-    if (targetPanel) {
-      targetPanel.classList.remove("hidden");
-    }
-  });
-});
-
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
+    // highlight chosen button
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
     const targetId = btn.getAttribute("data-target");
     const panel = document.getElementById(targetId);
     if (!panel) return;
 
     const label = btn.textContent.trim().toLowerCase();
     loadModuleForPanel(label, panel);
+  });
+});
+
+// LOG DETAIL TOGGLES
+logLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    const role = link.getAttribute("data-role");
+    const targetId = "log-" + role;
+
+    logPanels.forEach(p => p.classList.add("hidden"));
+
+    const targetPanel = document.getElementById(targetId);
+    if (targetPanel) {
+      targetPanel.classList.remove("hidden");
+    }
   });
 });

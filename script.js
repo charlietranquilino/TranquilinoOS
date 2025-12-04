@@ -129,6 +129,42 @@ function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+const MAX_LOG_LINES = 40;  // how many rows can be on screen at once
+
+async function streamLogs(durationMs, lineGenerator, intervalMs = 60) {
+  const start = Date.now();
+
+  while (Date.now() - start < durationMs) {
+    const text = lineGenerator();
+    addLine(text);  // add a new line at the bottom
+
+    // if we have more than MAX_LOG_LINES, remove from the top
+    const children = bootOutput.children;
+    if (children.length > MAX_LOG_LINES) {
+      bootOutput.removeChild(children[0]);
+    }
+
+    await wait(intervalMs);
+  }
+}
+
+
+function spamLogs(lines = 60) {
+  bootOutput.innerHTML = "";
+
+  for (let i = 0; i < lines; i++) {
+    const line = document.createElement("div");
+    line.className = "boot-line";
+
+    const step =
+      bootSteps[Math.floor(Math.random() * bootSteps.length)].label;
+
+    line.textContent = "> " + step;
+    bootOutput.appendChild(line);
+  }
+}
+
+
 function capitalize(word) {
   if (!word) return "";
   return word.charAt(0).toUpperCase() + word.slice(1);
@@ -141,17 +177,49 @@ async function runBootSequence() {
   bootOutput.classList.remove("hidden");
   bootOutput.innerHTML = "";
 
-  // Quick intro
+  // small intro text
   addLine("> Booting TranquilinoOS — Charlie Tranquilino Edition v1.0...");
   addLine("> Entering Verbose Mode...");
   addLine("");
   await wait(300);
 
   addLine("> Initializing hardware profile...");
-  addLine(" Detecting CPU, memory, and adapters...");
-  addLine(" Validating input and display channels...");
+  addLine("[VERBOSE] Detecting CPU, memory, and adapters...");
+  addLine("[VERBOSE] Validating input/output channels...");
   addLine("");
   await wait(400);
+
+  // generator for boot log lines
+  const bootLineGenerator = () => {
+    const step = bootSteps[Math.floor(Math.random() * bootSteps.length)];
+    return "[VERBOSE] " + step.label;
+  };
+
+  // stream logs for ~6 seconds
+  await streamLogs(6000, bootLineGenerator, 60);
+
+  // finalization + unlock
+  addLine("");
+  addLine("[STATUS] Finalizing boot sequence...");
+  await wait(250);
+  addLine("[VERBOSE] Mapping resume kernels into memory space...");
+  addLine("[VERBOSE] Synchronizing skill modules across sessions...");
+  addLine("[VERBOSE] Validating process table and active context...");
+  await wait(350);
+  addLine("[OK] System state stabilized");
+  addLine("");
+  await wait(300);
+  addLine("> System Unlocked.");
+  addLine("> Awaiting Command...");
+  addLine("");
+
+  setTimeout(() => {
+    bootOutput.classList.add("hidden");
+    if (bootLogo) bootLogo.classList.add("hidden");
+    mainUI.classList.remove("hidden");
+  }, 400);
+
+
 
   // Extra verbose templates used for all pages
   const verboseMessages = [

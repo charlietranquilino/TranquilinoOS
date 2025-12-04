@@ -73,8 +73,8 @@ body {
 .terminal {
   position: relative;
   width: 100%;
-  max-width: 1100px;      /* a bit wider */
-  height: 90vh;           /* almost full screen height */
+  max-width: 900px;
+  height: 85vh;          /* fills most of the screen */
   background: rgba(0, 0, 0, 0.92);
   border-radius: 12px;
   border: 1px solid #2b2b2b;
@@ -86,17 +86,20 @@ body {
 }
 
 
+
 .boot-output {
   flex: 1;
-  overflow-y: hidden;
-  font-size: 0.65rem;  /* small, jailbreak-style */
-  line-height: 1.1;    /* dense text */
+  overflow-y: hidden;    /* ❗ no scrollbar, no manual scroll */
+  font-size: 0.65rem;    /* jailbreak-sized text */
+  line-height: 1.1;      /* dense logs */
   padding-right: 8px;
   padding-left: 6px;
   margin-bottom: 8px;
-  max-width: 100%;     /* ✅ use full terminal width */
+  max-width: 100%;
   z-index: 2;
 }
+
+
 
 
 .boot-line {

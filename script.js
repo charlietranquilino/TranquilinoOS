@@ -129,7 +129,7 @@ function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const MAX_LOG_LINES = 30; // how many lines stay visible at once (tune if needed)
+const MAX_LOG_LINES = 60; // more lines so the screen is fully packed
 
 // tiny one-liner snippets to mix in
 const shortSnippets = [
@@ -204,6 +204,11 @@ async function runBootSequence() {
     return "> " + step.label;
   };
 
+  // pre-fill with a bunch of random lines so the screen is full right away
+  for (let i = 0; i < 25; i++) {
+    addLine(bootLineGenerator());
+  }
+
   // chaotic fast scroll for ~6.5 seconds
   await chaoticStreamLogs(6500, bootLineGenerator);
 
@@ -228,6 +233,7 @@ async function runBootSequence() {
     mainUI.classList.remove("hidden");
   }, 400);
 }
+
 
 // ------------------------ PER-CLICK MINI LOADERS ------------------------
 

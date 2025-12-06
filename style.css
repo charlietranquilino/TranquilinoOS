@@ -74,7 +74,7 @@ body {
   position: relative;
   width: 100%;
   max-width: 900px;
-  height: 85vh;          /* fills most of the screen */
+  height: 100vh;         /* fill full screen height */
   background: rgba(0, 0, 0, 0.92);
   border-radius: 12px;
   border: 1px solid #2b2b2b;
@@ -347,11 +347,13 @@ body {
 @media (max-width: 768px) {
   body {
     align-items: flex-start;
+    justify-content: flex-start;   /* top-left, not centered */
   }
 
   .terminal {
     max-width: 100%;
     border-radius: 0;
+    height: 100vh;                 /* full height on mobile too */
   }
 
   .boot-output {

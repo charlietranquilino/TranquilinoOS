@@ -1,5 +1,5 @@
 // TranquilinoOS — Charlie Tranquilino Edition
-// Text-only kernels, no loading bars
+// Chaotic text-only kernels, no loading bars
 
 // ------------------------ BOOT SETUP ------------------------
 
@@ -45,12 +45,12 @@ const bootSteps = [
   { label: "Optimizing cache: endpoint_profiles.cache" }
 ];
 
-// Per-panel kernels for button clicks (NO [COMPLETE])
+// Per-panel kernels for button clicks (NO VERBOSE, plain text)
 const panelKernels = {
   summary: [
     "Loading profile_summary.core",
     "Aggregating experience.timeline",
-    "Indexing customer-facing_background.db",
+    "Indexing customer_facing_background.db",
     "Optimizing strengths_matrix.cache",
     "Syncing career_snapshot.view",
     "Verifying profile_integrity.checksum"
@@ -121,7 +121,7 @@ function addLine(text, parent = bootOutput) {
   line.className = "boot-line";
   line.textContent = text;
   parent.appendChild(line);
-  parent.scrollTop = parent.scrollHeight;
+  parent.scrollTop = parent.scrollHeight; // always stay at bottom
   return line;
 }
 
@@ -129,38 +129,55 @@ function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const MAX_LOG_LINES = 40;  // how many rows can be on screen at once
+const MAX_LOG_LINES = 30; // how many lines stay visible at once (tune if needed)
 
-async function streamLogs(durationMs, lineGenerator, intervalMs = 60) {
+// tiny one-liner snippets to mix in
+const shortSnippets = [
+  "> file.tmp",
+  "> file.log",
+  "> file.sys",
+  "> file.xyz",
+  "> Loading...",
+  "> Loading…",
+  "> Showing...",
+  "> Ready.",
+  "> OK"
+];
+
+// chaotic scroll: random burst sizes, random intervals, always pushing up
+async function chaoticStreamLogs(durationMs, lineGenerator) {
   const start = Date.now();
+  let lastWasShort = false;
 
   while (Date.now() - start < durationMs) {
-    const text = lineGenerator();
-    addLine(text);  // add a new line at the bottom
+    // 1–6 lines per burst (short/medium/full-ish)
+    const batchSize = 1 + Math.floor(Math.random() * 6);
 
-    // if we have more than MAX_LOG_LINES, remove from the top
-    const children = bootOutput.children;
-    if (children.length > MAX_LOG_LINES) {
-      bootOutput.removeChild(children[0]);
+    for (let i = 0; i < batchSize; i++) {
+      let text;
+
+      // 25% chance of a short line, but never twice in a row
+      const useShort = Math.random() < 0.25 && !lastWasShort;
+
+      if (useShort) {
+        text = shortSnippets[Math.floor(Math.random() * shortSnippets.length)];
+        lastWasShort = true;
+      } else {
+        text = lineGenerator();
+        lastWasShort = false;
+      }
+
+      addLine(text);
     }
 
-    await wait(intervalMs);
-  }
-}
+    // keep only the most recent MAX_LOG_LINES lines so it looks like scrolling up
+    while (bootOutput.children.length > MAX_LOG_LINES) {
+      bootOutput.removeChild(bootOutput.firstChild);
+    }
 
-
-function spamLogs(lines = 60) {
-  bootOutput.innerHTML = "";
-
-  for (let i = 0; i < lines; i++) {
-    const line = document.createElement("div");
-    line.className = "boot-line";
-
-    const step =
-      bootSteps[Math.floor(Math.random() * bootSteps.length)].label;
-
-    line.textContent = "> " + step;
-    bootOutput.appendChild(line);
+    // 30–90ms between bursts => fast, chaotic motion
+    const interval = 30 + Math.floor(Math.random() * 60);
+    await wait(interval);
   }
 }
 
@@ -177,114 +194,32 @@ async function runBootSequence() {
   bootOutput.classList.remove("hidden");
   bootOutput.innerHTML = "";
 
-  // small intro text
+  // Immediately start with something on screen
   addLine("> Booting TranquilinoOS — Charlie Tranquilino Edition v1.0...");
-  addLine("> Entering Verbose Mode...");
   addLine("");
-  await wait(300);
 
-  addLine("> Initializing hardware profile...");
-  addLine("[VERBOSE] Detecting CPU, memory, and adapters...");
-  addLine("[VERBOSE] Validating input/output channels...");
-  addLine("");
-  await wait(400);
-
-  // generator for boot log lines
+  // generator for boot log lines (NO 'VERBOSE')
   const bootLineGenerator = () => {
     const step = bootSteps[Math.floor(Math.random() * bootSteps.length)];
-    return "[VERBOSE] " + step.label;
+    return "> " + step.label;
   };
 
-  // stream logs for ~6 seconds
-  await streamLogs(6000, bootLineGenerator, 60);
+  // chaotic fast scroll for ~6.5 seconds
+  await chaoticStreamLogs(6500, bootLineGenerator);
 
-  // finalization + unlock
+  // Finalization & unlock
   addLine("");
-  addLine("[STATUS] Finalizing boot sequence...");
+  addLine("Finalizing boot sequence...");
   await wait(250);
-  addLine("[VERBOSE] Mapping resume kernels into memory space...");
-  addLine("[VERBOSE] Synchronizing skill modules across sessions...");
-  addLine("[VERBOSE] Validating process table and active context...");
+  addLine("Mapping kernels into memory space...");
+  addLine("Synchronizing skill modules across sessions...");
+  addLine("Validating process table and active context...");
   await wait(350);
-  addLine("[OK] System state stabilized");
+  addLine("System state stabilized.");
   addLine("");
   await wait(300);
-  addLine("> System Unlocked.");
-  addLine("> Awaiting Command...");
-  addLine("");
-
-  setTimeout(() => {
-    bootOutput.classList.add("hidden");
-    if (bootLogo) bootLogo.classList.add("hidden");
-    mainUI.classList.remove("hidden");
-  }, 400);
-
-
-
-  // Extra verbose templates used for all pages
-  const verboseMessages = [
-    " Allocating memory blocks...",
-    " Resolving kernel dependencies...",
-    " Linking runtime symbols...",
-    " Verifying execution state...",
-    " Registering kernel hooks...",
-    " Syncing configuration from cache...",
-    " Flushing stale handles...",
-    " Updating internal routing tables...",
-    " Checking security posture...",
-    " Confirming I/O channels...",
-    " Attaching process scheduler...",
-    " Normalizing environment variables...",
-    " Preparing diagnostics stream..."
-  ];
-
-  const totalPages = 16;          // ~16 screens of logs
-  const delayPerPage = 220;       // ms between pages
-
-  for (let page = 0; page < totalPages; page++) {
-    // wipe the previous "screen"
-    bootOutput.innerHTML = "";
-
-    // header for this page (optional)
-    addLine("> Verbose log page " + (page + 1) + " of " + totalPages);
-    addLine("");
-
-    // number of lines this page
-    const linesThisPage = 12 + Math.floor(Math.random() * 10); // 12–21 lines
-
-    for (let i = 0; i < linesThisPage; i++) {
-      let lineText;
-
-      if (Math.random() < 0.45) {
-        // ~45% of the time, pull from your real boot steps
-        const step = bootSteps[Math.floor(Math.random() * bootSteps.length)];
-        lineText = " " + step.label;
-      } else {
-        // otherwise use a generic verbose line
-        lineText = verboseMessages[Math.floor(Math.random() * verboseMessages.length)];
-      }
-
-      addLine(lineText);
-    }
-
-    // brief pause before wiping and drawing the next "page"
-    await wait(delayPerPage);
-  }
-
-  // Finalization block
-  bootOutput.innerHTML = "";
-  addLine(" Finalizing boot sequence...");
-  await wait(250);
-  addLine(" Mapping resume kernels into memory space...");
-  addLine(" Synchronizing skill modules across sessions...");
-  addLine(" Validating process table and active context...");
-  await wait(350);
-  addLine(" System state stabilized");
-  addLine("");
-
-  await wait(300);
-  addLine("> System Unlocked.");
-  addLine("> Awaiting Command...");
+  addLine("> System unlocked.");
+  addLine("> Awaiting command...");
   addLine("");
 
   setTimeout(() => {
@@ -294,11 +229,10 @@ async function runBootSequence() {
   }, 400);
 }
 
-
 // ------------------------ PER-CLICK MINI LOADERS ------------------------
 
 async function loadModuleForPanel(label, panel) {
-  // hide UI, show kernels only
+  // hide UI, show log area
   mainUI.classList.add("hidden");
   bootOutput.classList.remove("hidden");
   bootOutput.innerHTML = "";
@@ -306,17 +240,23 @@ async function loadModuleForPanel(label, panel) {
   const niceLabel = capitalize(label);
   const idSlug = label.replace(/\s+/g, "_").toLowerCase();
 
-  addLine("> Processing Command: " + niceLabel);
+  addLine("> Processing command: " + niceLabel);
   addLine("");
 
-  // pick kernels based on which button was pressed
-  const kernels = panelKernels[idSlug] || panelKernels.default;
+  const kernels = (panelKernels && panelKernels[idSlug]) || panelKernels.default || [];
 
-  // run through those kernels quickly WITHOUT [COMPLETE]
-  for (const text of kernels) {
-    addLine("> " + text);
-    await wait(70);   // jailbreak-fast
-  }
+  let kIndex = 0;
+  const panelLineGenerator = () => {
+    if (!kernels.length) {
+      return "> Executing panel: " + niceLabel;
+    }
+    const text = kernels[kIndex];
+    kIndex = (kIndex + 1) % kernels.length;
+    return "> " + text;
+  };
+
+  // chaotic fast scroll for ~1 second per button click
+  await chaoticStreamLogs(1000, panelLineGenerator);
 
   // show correct panel
   document.querySelectorAll(".panel").forEach(p =>
@@ -324,7 +264,7 @@ async function loadModuleForPanel(label, panel) {
   );
   panel.classList.remove("hidden");
 
-  // bring UI back, hide kernels again
+  // hide logs again and bring UI back
   setTimeout(() => {
     bootOutput.classList.add("hidden");
     mainUI.classList.remove("hidden");

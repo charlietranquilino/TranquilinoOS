@@ -315,6 +315,3 @@ logLinks.forEach(link => {
     }
   });
 });
-
-<!-- rebuild -->
-  

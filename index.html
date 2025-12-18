@@ -173,7 +173,7 @@
           </ul>
         </div>
       </div> <!-- end #logs -->
-
+<button id="logs-back">⬅ Back</button>
       <!-- CONTACT -->
       <div id="contact" class="panel hidden">
         <div class="panel-title">[ CONTACT CHANNEL ]</div>
@@ -194,3 +194,28 @@
   <script src="script.js"></script>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const entries = document.querySelectorAll(".log-entry");
+  const backBtn = document.getElementById("logs-back");
+
+  if (!entries.length || !backBtn) return;
+
+  entries.forEach(entry => {
+    entry.addEventListener("click", () => {
+      entries.forEach(e => e.classList.add("hidden"));
+      entry.classList.remove("hidden");
+      entry.classList.add("expanded");
+      backBtn.classList.add("show");
+    });
+  });
+
+  backBtn.addEventListener("click", () => {
+    entries.forEach(e => {
+      e.classList.remove("hidden");
+      e.classList.remove("expanded");
+    });
+    backBtn.classList.remove("show");
+  });
+});
+</script>

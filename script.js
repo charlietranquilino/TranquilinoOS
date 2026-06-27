@@ -36,12 +36,67 @@ async function typeLine(text, speed = 3) {
 }
 
   async function runBoot() {
-    enterScreen.style.display = "none";
-    mainUI.classList.add("hidden");
-    bootOutput.classList.remove("hidden");
-    if (bootLogo) bootLogo.classList.remove("hidden");
+  enterScreen.style.display = "none";
+  mainUI.classList.add("hidden");
+  bootOutput.classList.remove("hidden");
+  if (bootLogo) bootLogo.classList.remove("hidden");
 
-    bootOutput.innerHTML = "";
+  bootOutput.innerHTML = "";
+
+  const commands = [
+    "nmap -sV tranquilino.local --open",
+    "ssh root@tranquilino-os",
+    "decrypt --target career_snapshot.db",
+    "inject endpoint_support_engine.kext",
+    "mount /portfolio/index",
+    "scan --intune --entra --autopilot",
+    "bypass legacy_profile_cache.lock",
+    "elevate --role endpoint_admin",
+    "load modules summary modules portfolio logs contact",
+    "unlock --session Charlie_Tranquilino"
+  ];
+
+  const responses = [
+    "[OK] Kernel accepted",
+    "[OK] Intune module loaded",
+    "[OK] Autopilot profile synced",
+    "[WARN] Legacy cache detected",
+    "[OK] Hash validated",
+    "[OK] Entra records mapped",
+    "[OK] Portfolio volume mounted",
+    "[OK] Logs decrypted",
+    "[ACCESS] Privilege escalation successful",
+    "[ROOT] TranquilinoOS unlocked"
+  ];
+
+  for (let i = 0; i < 18; i++) {
+    const cmd = commands[Math.floor(Math.random() * commands.length)];
+    const res = responses[Math.floor(Math.random() * responses.length)];
+    const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
+
+    await typeLine("root@tranquilino:~$ " + cmd, 8);
+    await wait(120);
+    addLine(res + " :: 0x" + hex);
+
+    await wait(180);
+
+    while (bootOutput.children.length > 55) {
+      bootOutput.removeChild(bootOutput.firstChild);
+    }
+  }
+
+  addLine("");
+  await typeLine("root@tranquilino:~$ sudo unlock-system --force", 10);
+  await wait(300);
+  addLine("[ACCESS GRANTED]");
+  await wait(250);
+  addLine("[SYSTEM UNLOCKED]");
+  await wait(350);
+
+  bootOutput.classList.add("hidden");
+  if (bootLogo) bootLogo.classList.add("hidden");
+  mainUI.classList.remove("hidden");
+}
 
     const bootSteps = [
   "[OK] Injecting kernel: endpoint_support_engine.kext",

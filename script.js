@@ -3,29 +3,63 @@ window.onload = function () {
   const enterScreen = document.getElementById("enter-screen");
   const mainUI = document.getElementById("main-ui");
   const bootOutput = document.getElementById("boot-output");
+  const bootLogo = document.getElementById("boot-logo");
 
-  enterBtn.onclick = function () {
+  function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function addLine(text) {
+    const line = document.createElement("div");
+    line.className = "boot-line";
+    line.textContent = text;
+    bootOutput.appendChild(line);
+    bootOutput.scrollTop = bootOutput.scrollHeight;
+  }
+
+  async function runBoot() {
     enterScreen.style.display = "none";
+    mainUI.classList.add("hidden");
+    bootOutput.classList.remove("hidden");
+    if (bootLogo) bootLogo.classList.remove("hidden");
+
+    bootOutput.innerHTML = "";
+
+    const lines = [
+      "> Booting TranquilinoOS...",
+      "> Injecting kernel: endpoint_support_engine.kext",
+      "> Loading driver: intune_device_provisioning.sys",
+      "> Loading driver: windows_autopilot_boot.sys",
+      "> Mounting volume: portfolio.index",
+      "> Syncing career_snapshot.view",
+      "> Loading modules: summary, modules, portfolio, logs, contact",
+      "> System unlocked.",
+      "> Awaiting command..."
+    ];
+
+    for (const line of lines) {
+      addLine(line);
+      await wait(300);
+    }
+
+    await wait(400);
+
     bootOutput.classList.add("hidden");
+    if (bootLogo) bootLogo.classList.add("hidden");
     mainUI.classList.remove("hidden");
-  };
+  }
+
+  enterBtn.onclick = runBoot;
 
   document.querySelectorAll(".command-btn").forEach(function (btn) {
     btn.onclick = function () {
-      document.querySelectorAll(".panel").forEach(function (panel) {
-        panel.classList.add("hidden");
-      });
-
-      document.querySelectorAll(".command-btn").forEach(function (b) {
-        b.classList.remove("active");
-      });
+      document.querySelectorAll(".panel").forEach(panel => panel.classList.add("hidden"));
+      document.querySelectorAll(".command-btn").forEach(b => b.classList.remove("active"));
 
       btn.classList.add("active");
 
       const target = document.getElementById(btn.dataset.target);
-      if (target) {
-        target.classList.remove("hidden");
-      }
+      if (target) target.classList.remove("hidden");
     };
   });
 
@@ -42,10 +76,7 @@ window.onload = function () {
 
   document.querySelectorAll("[data-project]").forEach(function (btn) {
     btn.onclick = function () {
-      const output = document.getElementById("project-output");
-      if (output) {
-        output.innerText = projects[btn.dataset.project];
-      }
+      document.getElementById("project-output").innerText = projects[btn.dataset.project];
     };
   });
 
@@ -58,10 +89,7 @@ window.onload = function () {
 
   document.querySelectorAll("[data-role]").forEach(function (btn) {
     btn.onclick = function () {
-      const output = document.getElementById("log-output");
-      if (output) {
-        output.innerText = logs[btn.dataset.role];
-      }
+      document.getElementById("log-output").innerText = logs[btn.dataset.role];
     };
   });
-};
+};};

@@ -10,20 +10,22 @@ window.onload = function () {
     mainUI.classList.remove("hidden");
   };
 
-  document.querySelectorAll(".command-btn").forEach(btn => {
+  document.querySelectorAll(".command-btn").forEach(function (btn) {
     btn.onclick = function () {
-      document.querySelectorAll(".panel").forEach(panel => {
+      document.querySelectorAll(".panel").forEach(function (panel) {
         panel.classList.add("hidden");
       });
 
-      document.querySelectorAll(".command-btn").forEach(b => {
+      document.querySelectorAll(".command-btn").forEach(function (b) {
         b.classList.remove("active");
       });
 
       btn.classList.add("active");
 
       const target = document.getElementById(btn.dataset.target);
-      if (target) target.classList.remove("hidden");
+      if (target) {
+        target.classList.remove("hidden");
+      }
     };
   });
 
@@ -38,9 +40,12 @@ window.onload = function () {
     printerlogic: "[ PRINTERLOGIC ]\n\nSupported printer deployment, IP validation, scan-to-email troubleshooting, and driver packaging."
   };
 
-  document.querySelectorAll("[data-project]").forEach(btn => {
+  document.querySelectorAll("[data-project]").forEach(function (btn) {
     btn.onclick = function () {
-      document.getElementById("project-output").innerText = projects[btn.dataset.project];
+      const output = document.getElementById("project-output");
+      if (output) {
+        output.innerText = projects[btn.dataset.project];
+      }
     };
   });
 
@@ -51,9 +56,13 @@ window.onload = function () {
     animation: "[ LEAD ANIMATION INSTRUCTOR ]\n\nLed workshops, supported students, and maintained studio operations."
   };
 
-  document.querySelectorAll("[data-role]").forEach(btn => {
+  document.querySelectorAll("[data-role]").forEach(function (btn) {
     btn.onclick = function () {
-      document.getElementById("log-output").innerText = logs[btn.dataset.role];
+      const output = document.getElementById("log-output");
+      if (output) {
+        output.innerText = logs[btn.dataset.role];
+      }
     };
   });
+};  });
 };});}

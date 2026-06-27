@@ -6,28 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<script>
-const projects = {
-  win11: "Enterprise Windows 11 Migration\n\nSupported a 1,500+ device Windows 10 to Windows 11 Enterprise migration.\n\nTools: Intune, Autopilot, Entra ID, Active Directory, imaging, VPN.",
-  intune: "Intune Administration\n\nManaged device enrollment, compliance checks, policy support, and troubleshooting.\n\nTools: Microsoft Intune, Company Portal, Autopilot.",
-  autopilot: "Windows Autopilot\n\nUploaded hardware hashes, validated OOBE enrollment, and supported device provisioning.",
-  entra: "Entra ID Administration\n\nSupported user/device administration, MFA enrollment, ADUC checks, and access troubleshooting.",
-  powerbi: "Power BI Inventory Dashboard\n\nBuilt inventory reporting dashboards for endpoint tracking, hardware counts, and deployment planning.",
-  abm: "Apple Business Manager\n\nSupported ABM, Apple Configurator, iPad enrollment, and activation lock workflows.",
-  meraki: "Cisco Meraki\n\nValidated VLANs, switch ports, PoE, VPN access, and printer/device connectivity.",
-  printerlogic: "PrinterLogic\n\nSupported printer deployment, IP validation, scan-to-email troubleshooting, and driver packaging."
-};
 
-document.querySelectorAll(".folder-btn").forEach(button => {
-  button.addEventListener("click", () => {
-    const project = button.dataset.project;
-    document.getElementById("project-output").innerText = projects[project];
-  });
-});
-</script>
 <body>
 
-  <!-- CLICK TO ENTER SCREEN -->
   <div id="enter-screen" class="enter-screen">
     <div class="enter-box">
       <div class="enter-title">TRANQUILINO OS</div>
@@ -37,30 +18,23 @@ document.querySelectorAll(".folder-btn").forEach(button => {
     </div>
   </div>
 
-  <!-- TERMINAL SYSTEM -->
   <div class="terminal">
 
-    <!-- Centered glitch logo (shows only while booting) -->
     <div id="boot-logo" class="boot-logo hidden">
-      <div class="glitch-logo">
-      </div>
+      <div class="glitch-logo"></div>
     </div>
 
-    <!-- Kernel / boot log output -->
     <div id="boot-output" class="boot-output"></div>
 
-    <!-- MAIN UI (shows after boot finishes) -->
     <div id="main-ui" class="main-ui hidden">
 
       <div class="terminal-line">
         <span class="prompt">&gt;</span> System Unlocked. Welcome to
         <span class="accent">TranquilinoOS</span>.
-        
       </div>
 
       <div class="terminal-line">
         <span class="prompt">&gt;</span> Available Commands:
-        
       </div>
 
       <div class="command-list">
@@ -71,118 +45,95 @@ document.querySelectorAll(".folder-btn").forEach(button => {
         <button class="command-btn" data-target="contact">Contact</button>
       </div>
 
-      <!-- SUMMARY -->
       <div id="summary" class="panel hidden">
         <div class="panel-title">[ PROFILE SUMMARY ]</div>
         <p>
-          Endpoint & IT Operations professional specializing in endpoint lifecycle management, device provisioning, identity administration, and enterprise support across multi-site environments. Experienced with Microsoft Intune, Windows Autopilot, Entra ID, Active Directory, Apple Business Manager (ABM), Device Enrollment Manager (DEM), Cisco Meraki, PrinterLogic, and 8x8.
+          Endpoint & IT Operations professional specializing in endpoint lifecycle management,
+          device provisioning, identity administration, and enterprise support across multi-site
+          environments. Experienced with Microsoft Intune, Windows Autopilot, Entra ID,
+          Active Directory, Apple Business Manager, Device Enrollment Manager, Cisco Meraki,
+          PrinterLogic, and 8x8.
         </p>
       </div>
 
-      <!-- MODULES -->
       <div id="modules" class="panel hidden">
         <div class="panel-title">[ SKILL MODULES ]</div>
         <ul>
-          <li>Endpoint Management — Intune, Azure AD, Windows Autopilot, Apple Business Manager(ABM), Device Enrollment Manager(DEM), PrinterLogic</li>
+          <li>Endpoint Management — Intune, Azure AD, Windows Autopilot, ABM, DEM, PrinterLogic</li>
           <li>Directory Services — Active Directory, Group Policy, User & Access Administration</li>
           <li>SaaS Administration — Adobe Admin Console, 8x8 UC, Neat Pulse, Freshservice, ServiceNow</li>
           <li>Networking & VoIP — Cisco Meraki, VLAN/PoE Operations</li>
           <li>Hardware Lifecycle — Provisioning, Enterprise Imaging, Device Deployment, Asset Management</li>
-          <li>Identity & Security — MFA/Authenticator Setup, Compliance</li>
+          <li>Identity & Security — MFA, Authenticator Setup, Compliance</li>
           <li>Device Remediation — Factory Resets, Re-enrollment Workflows, Zebra Scanner Coordination</li>
           <li>Operational Workflow — Documentation Standards, Cross-Team Coordination</li>
         </ul>
       </div>
 
-      <!-- PORTFOLIO -->
-<div id="processes" class="panel hidden">
-  <div class="panel-title">[ PORTFOLIO ]</div>
+      <div id="processes" class="panel hidden">
+        <div class="panel-title">[ PORTFOLIO ]</div>
 
-  <div class="folder-list">
-    <button class="folder-btn" data-project="win11">> Enterprise Windows 11 Migration</button>
-    <button class="folder-btn" data-project="intune">> Intune Administration</button>
-    <button class="folder-btn" data-project="autopilot">> Windows Autopilot</button>
-    <button class="folder-btn" data-project="entra">> Entra ID Administration</button>
-    <button class="folder-btn" data-project="powerbi">> Power BI Inventory Dashboard</button>
-    <button class="folder-btn" data-project="abm">> Apple Business Manager</button>
-    <button class="folder-btn" data-project="meraki">> Cisco Meraki</button>
-    <button class="folder-btn" data-project="printerlogic">> PrinterLogic</button>
-  </div>
+        <div class="folder-list">
+          <button class="folder-btn" data-project="win11">&gt; Enterprise Windows 11 Migration</button>
+          <button class="folder-btn" data-project="intune">&gt; Intune Administration</button>
+          <button class="folder-btn" data-project="autopilot">&gt; Windows Autopilot</button>
+          <button class="folder-btn" data-project="entra">&gt; Entra ID Administration</button>
+          <button class="folder-btn" data-project="powerbi">&gt; Power BI Inventory Dashboard</button>
+          <button class="folder-btn" data-project="abm">&gt; Apple Business Manager</button>
+          <button class="folder-btn" data-project="meraki">&gt; Cisco Meraki</button>
+          <button class="folder-btn" data-project="printerlogic">&gt; PrinterLogic</button>
+        </div>
 
-  <div id="project-output" class="project-output">
-    Select a project to view details.
-  </div>
-</div>
+        <div id="project-output" class="project-output">
+          Select a project to view details.
+        </div>
+      </div>
 
-      <!-- LOGS (clickable roles -> bullet details) -->
       <div id="logs" class="panel hidden">
         <div class="panel-title">[ SYSTEM LOGS ]</div>
-        <ul>
-          <li>
-            <button class="log-link" data-role="helpdesk">
-              Nov 2025 – June 2026</li>
-              Desktop Engineer | Endpoint Administration(Champion Home Builders)
-            </button>
-          </li>
-          <li>
-            <button class="log-link" data-role="techops">
-              Feb 2025 – Present</li>
-              Technical Operations Lead (Mari-Go)
-            </button>
-          </li>
-          <li>
-            <button class="log-link" data-role="lifecycle">
-              Oct 2024 – May 2025</li>
-              IT Lifecycle Refresh (Corewell Health/ MCPC)
-            </button>
-          </li>
-          <li>
-            <button class="log-link" data-role="animation">
-              Jul 2024 – May 2025</li>
-              Lead Animation Instructor (Animation Discovery Studio)
-            </button>
-          </li>
-        </ul>
 
-        <!-- DETAIL BLOCKS (only one visible at a time) -->
+        <ul id="log-menu">
+          <li><button class="log-link" data-role="helpdesk">Nov 2025 – June 2026<br>Desktop Engineer | Endpoint Administration — Champion Home Builders</button></li>
+          <li><button class="log-link" data-role="techops">Feb 2025 – Present<br>Technical Operations Lead — Mari-Go</button></li>
+          <li><button class="log-link" data-role="lifecycle">Oct 2024 – May 2025<br>IT Lifecycle Refresh — Corewell Health / MCPC</button></li>
+          <li><button class="log-link" data-role="animation">Jul 2024 – May 2025<br>Lead Animation Instructor — Animation Discovery Studio</button></li>
+        </ul>
 
         <div id="log-helpdesk" class="log-details hidden">
           <ul>
-            <li>-Supported a 1,500+ endpoint Windows 11 migration initiative across U.S. and Canadian locations, managing provisioning, deployment readiness, asset accountability, and logistics coordination.</li>
-            <li>-Provisioned, enrolled, and supported 150+ Windows and Apple devices utilizing Microsoft Intune, Windows Autopilot, Entra ID, Active Directory, Apple Business Manager (ABM), and Device Enrollment Manager (DEM).</li>
-            <li>-Administered enterprise technologies including PrinterLogic, Cisco Meraki, 8x8, Intune, Entra ID, and Apple Business Manager while developing deployment documentation, quality-control procedures, and onboarding standards that improved provisioning consistency.</li>
+            <li>Supported a 1,500+ endpoint Windows 11 migration across U.S. and Canadian locations.</li>
+            <li>Provisioned, enrolled, and supported 150+ Windows and Apple devices using Intune, Autopilot, Entra ID, AD, ABM, and DEM.</li>
+            <li>Administered PrinterLogic, Cisco Meraki, 8x8, Intune, Entra ID, and ABM while creating deployment documentation and QC standards.</li>
           </ul>
         </div>
 
         <div id="log-techops" class="log-details hidden">
           <ul>
-            <li>-Lead coordination between technical, design, and operations teams to align automation workflows with business objectives and improve system efficiency.</li>
-            <li>-Support AI integration and internal tools by updating documentation, version control, and knowledge base indexing.</li>
-            <li>-Develop clear SOPs and documentation based on patterns found in Jira tickets and backlog trends.</li>
-            <li>-Oversee ticket lifecycle in Jira, ensuring issues are assigned, escalated, and resolved efficiently.</li>
+            <li>Lead coordination between technical, design, and operations teams.</li>
+            <li>Support AI integration, documentation, version control, and knowledge base indexing.</li>
+            <li>Develop SOPs based on Jira tickets and backlog trends.</li>
           </ul>
         </div>
 
         <div id="log-lifecycle" class="log-details hidden">
           <ul>
-            <li>-Imaged and deployed 1,000+ desktops, laptops, and AIO devices using PXE boot / USB imaging, ensuring devices were integrated into the hospital network and aligned with HIPAA standards.</li>
-            <li>-Managed IT workflows and asset lifecycles in ServiceNow, including CMDB audits, configuration logs, and decommissioning of outdated systems.</li>
-            <li>-Applied elevated administrative access and produced compliance reports to support hospital security policies and reduce risk.</li>
-            <li>-Collaborated with clinical staff and administrators to schedule secure refreshes and apply security patches while minimizing downtime.</li>
+            <li>Imaged and deployed 1,000+ desktops, laptops, and AIO devices using PXE boot / USB imaging.</li>
+            <li>Managed IT workflows and asset lifecycles in ServiceNow.</li>
+            <li>Supported hospital refreshes while minimizing downtime.</li>
           </ul>
         </div>
 
         <div id="log-animation" class="log-details hidden">
           <ul>
-            <li>-Led and facilitated animation workshops, assisting instructors and maintaining studio standards and curriculum.</li>
-            <li>-Ensured tools and resources were prepared and functional through inventory checks and maintenance requests.</li>
-            <li>-Collaborated on projects to align with studio quality and creative standards, providing feedback to enhance student learning.</li>
-            <li>-Assisted at networking events to support new business opportunities and community engagement.</li>
+            <li>Led animation workshops and maintained studio standards.</li>
+            <li>Prepared tools, resources, and inventory for classes.</li>
+            <li>Supported creative projects, events, and student learning.</li>
           </ul>
         </div>
-      </div> <!-- end #logs -->
-<button id="logs-back">⬅ Back</button>
-      <!-- CONTACT -->
+
+        <button id="logs-back" class="hidden">⬅ Back</button>
+      </div>
+
       <div id="contact" class="panel hidden">
         <div class="panel-title">[ CONTACT CHANNEL ]</div>
         <p>
@@ -195,34 +146,9 @@ document.querySelectorAll(".folder-btn").forEach(button => {
         </p>
       </div>
 
-    </div> <!-- end #main-ui -->
-  </div> <!-- end .terminal -->
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
-</html>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const entries = document.querySelectorAll(".log-entry");
-  const backBtn = document.getElementById("logs-back");
-
-  if (!entries.length || !backBtn) return;
-
-  entries.forEach(entry => {
-    entry.addEventListener("click", () => {
-      entries.forEach(e => e.classList.add("hidden"));
-      entry.classList.remove("hidden");
-      entry.classList.add("expanded");
-      backBtn.classList.add("show");
-    });
-  });
-
-  backBtn.addEventListener("click", () => {
-    entries.forEach(e => {
-      e.classList.remove("hidden");
-      e.classList.remove("expanded");
-    });
-    backBtn.classList.remove("show");
-  });
-});
-</script>
+</html></script>

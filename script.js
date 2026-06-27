@@ -92,4 +92,4 @@ window.onload = function () {
       document.getElementById("log-output").innerText = logs[btn.dataset.role];
     };
   });
-};};
+};

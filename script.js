@@ -51,7 +51,7 @@ addLine("> Initializing exploit chain...");
 addLine("> Elevating terminal session...");
 addLine("");
 
-for (let i = 0; i < 180; i++) {
+for (let i = 0; i < 140; i++) {
   const random = bootSteps[Math.floor(Math.random() * bootSteps.length)];
   const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
   const mem = Math.floor(Math.random() * 9999);
@@ -62,14 +62,25 @@ for (let i = 0; i < 180; i++) {
     bootOutput.removeChild(bootOutput.firstChild);
   }
 
-  await wait(8);
+  if (i % 18 === 0) {
+    await wait(500); // dramatic pause
+  } else if (i % 7 === 0) {
+    await wait(180); // small pause
+  } else {
+    await wait(35); // normal scrolling
+  }
 }
 
 addLine("");
+addLine("> FIREWALL RESPONSE: FAILED");
+await wait(550);
+addLine("> PRIVILEGE ESCALATION: SUCCESS");
+await wait(550);
 addLine("> ROOT ACCESS: GRANTED");
+await wait(700);
 addLine("> SYSTEM UNLOCKED");
 addLine("> Awaiting command...");
-await wait(200);
+await wait(500);
 
 addLine("> Booting TranquilinoOS...");
 

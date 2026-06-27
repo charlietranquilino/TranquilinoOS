@@ -17,6 +17,24 @@ window.onload = function () {
     bootOutput.scrollTop = bootOutput.scrollHeight;
   }
 
+async function typeLine(text, speed = 3) {
+    const line = document.createElement("div");
+    line.className = "boot-line";
+    bootOutput.appendChild(line);
+
+    for (let i = 0; i <= text.length; i++) {
+        line.textContent = text.substring(0, i) + "▋";
+        bootOutput.scrollTop = bootOutput.scrollHeight;
+        await wait(speed);
+    }
+
+    line.textContent = text;
+
+    while (bootOutput.children.length > 70) {
+        bootOutput.removeChild(bootOutput.firstChild);
+    }
+}
+
   async function runBoot() {
     enterScreen.style.display = "none";
     mainUI.classList.add("hidden");
@@ -52,23 +70,15 @@ addLine("> Elevating terminal session...");
 addLine("");
 
 for (let i = 0; i < 140; i++) {
-  const random = bootSteps[Math.floor(Math.random() * bootSteps.length)];
-  const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
-  const mem = Math.floor(Math.random() * 9999);
+    const random = bootSteps[Math.floor(Math.random() * bootSteps.length)];
+    const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
+    const mem = Math.floor(Math.random() * 9999);
 
-  addLine("> " + random + " :: 0x" + hex + " :: mem_" + mem);
+    await typeLine("> " + random + " :: 0x" + hex + " :: mem_" + mem, 2);
 
-  while (bootOutput.children.length > 70) {
-    bootOutput.removeChild(bootOutput.firstChild);
-  }
-
-  if (i % 18 === 0) {
-    await wait(500); // dramatic pause
-  } else if (i % 7 === 0) {
-    await wait(180); // small pause
-  } else {
-    await wait(35); // normal scrolling
-  }
+    if (i % 18 === 0) {
+        await wait(250);
+    }
 }
 
 addLine("");

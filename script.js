@@ -26,22 +26,50 @@ window.onload = function () {
     bootOutput.innerHTML = "";
 
     const bootSteps = [
-  "Injecting kernel: endpoint_support_engine.kext",
-  "Injecting kernel: system_administration_core.kext",
-  "Uploading module: desktop_engine.champion_home_builders",
-  "Uploading module: tech_ops_lead.mari_go",
-  "Uploading module: it_lifecycle.corewell_health",
-  "Loading driver: intune_device_provisioning.sys",
-  "Loading driver: azure_ad_identity.sys",
-  "Loading driver: windows_autopilot_boot.sys",
-  "Starting service: freshservice_daemon",
-  "Starting service: servicenow_assetd",
-  "Mounting volume: imaging_pipeline.pxe",
-  "Mounting volume: inventory_management.db",
-  "Enabling security surface: mfa_guardian",
-  "Loading daemon: asset_handoffd",
-  "Optimizing cache: endpoint_profiles.cache"
+  "[OK] Injecting kernel: endpoint_support_engine.kext",
+  "[OK] Bypassing legacy_profile_cache.lock",
+  "[OK] Loading driver: intune_device_provisioning.sys",
+  "[WARN] Autopilot hash mismatch detected... retrying",
+  "[OK] Autopilot hash accepted",
+  "[OK] Mounting volume: portfolio.index",
+  "[OK] Syncing career_snapshot.view",
+  "[SCAN] Enumerating endpoint modules...",
+  "[SCAN] Checking Entra ID records...",
+  "[SCAN] Validating Intune compliance state...",
+  "[OK] Starting service: freshservice_daemon",
+  "[OK] Linking PrinterLogic driver table",
+  "[OK] Opening Meraki switch telemetry",
+  "[OK] Loading ABM enrollment profile",
+  "[OK] Decrypting logs: champion_home_builders.db",
+  "[OK] Decrypting logs: corewell_health.db",
+  "[OK] Building UI command shell",
+  "[OK] Access granted"
 ];
+
+addLine("> Booting TranquilinoOS...");
+addLine("> Initializing exploit chain...");
+addLine("> Elevating terminal session...");
+addLine("");
+
+for (let i = 0; i < 180; i++) {
+  const random = bootSteps[Math.floor(Math.random() * bootSteps.length)];
+  const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
+  const mem = Math.floor(Math.random() * 9999);
+
+  addLine("> " + random + " :: 0x" + hex + " :: mem_" + mem);
+
+  while (bootOutput.children.length > 70) {
+    bootOutput.removeChild(bootOutput.firstChild);
+  }
+
+  await wait(8);
+}
+
+addLine("");
+addLine("> ROOT ACCESS: GRANTED");
+addLine("> SYSTEM UNLOCKED");
+addLine("> Awaiting command...");
+await wait(200);
 
 addLine("> Booting TranquilinoOS...");
 

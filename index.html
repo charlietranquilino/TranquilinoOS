@@ -6,7 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
+<script>
+const projects = {
+  win11: "Enterprise Windows 11 Migration\n\nSupported a 1,500+ device Windows 10 to Windows 11 Enterprise migration.\n\nTools: Intune, Autopilot, Entra ID, Active Directory, imaging, VPN.",
+  intune: "Intune Administration\n\nManaged device enrollment, compliance checks, policy support, and troubleshooting.\n\nTools: Microsoft Intune, Company Portal, Autopilot.",
+  autopilot: "Windows Autopilot\n\nUploaded hardware hashes, validated OOBE enrollment, and supported device provisioning.",
+  entra: "Entra ID Administration\n\nSupported user/device administration, MFA enrollment, ADUC checks, and access troubleshooting.",
+  powerbi: "Power BI Inventory Dashboard\n\nBuilt inventory reporting dashboards for endpoint tracking, hardware counts, and deployment planning.",
+  abm: "Apple Business Manager\n\nSupported ABM, Apple Configurator, iPad enrollment, and activation lock workflows.",
+  meraki: "Cisco Meraki\n\nValidated VLANs, switch ports, PoE, VPN access, and printer/device connectivity.",
+  printerlogic: "PrinterLogic\n\nSupported printer deployment, IP validation, scan-to-email troubleshooting, and driver packaging."
+};
 
+document.querySelectorAll(".folder-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    const project = button.dataset.project;
+    document.getElementById("project-output").innerText = projects[project];
+  });
+});
+</script>
 <body>
 
   <!-- CLICK TO ENTER SCREEN -->

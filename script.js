@@ -25,24 +25,40 @@ window.onload = function () {
 
     bootOutput.innerHTML = "";
 
-    const lines = [
-      "> Booting TranquilinoOS...",
-      "> Injecting kernel: endpoint_support_engine.kext",
-      "> Loading driver: intune_device_provisioning.sys",
-      "> Loading driver: windows_autopilot_boot.sys",
-      "> Mounting volume: portfolio.index",
-      "> Syncing career_snapshot.view",
-      "> Loading modules: summary, modules, portfolio, logs, contact",
-      "> System unlocked.",
-      "> Awaiting command..."
-    ];
+    const bootSteps = [
+  "Injecting kernel: endpoint_support_engine.kext",
+  "Injecting kernel: system_administration_core.kext",
+  "Uploading module: desktop_engine.champion_home_builders",
+  "Uploading module: tech_ops_lead.mari_go",
+  "Uploading module: it_lifecycle.corewell_health",
+  "Loading driver: intune_device_provisioning.sys",
+  "Loading driver: azure_ad_identity.sys",
+  "Loading driver: windows_autopilot_boot.sys",
+  "Starting service: freshservice_daemon",
+  "Starting service: servicenow_assetd",
+  "Mounting volume: imaging_pipeline.pxe",
+  "Mounting volume: inventory_management.db",
+  "Enabling security surface: mfa_guardian",
+  "Loading daemon: asset_handoffd",
+  "Optimizing cache: endpoint_profiles.cache"
+];
 
-    for (const line of lines) {
-      addLine(line);
-      await wait(300);
-    }
+addLine("> Booting TranquilinoOS...");
 
-    await wait(400);
+for (let i = 0; i < 120; i++) {
+  const random = bootSteps[Math.floor(Math.random() * bootSteps.length)];
+  addLine("> " + random);
+
+  while (bootOutput.children.length > 55) {
+    bootOutput.removeChild(bootOutput.firstChild);
+  }
+
+  await wait(15);
+}
+
+addLine("> System unlocked.");
+addLine("> Awaiting command...");
+await wait(150);
 
     bootOutput.classList.add("hidden");
     if (bootLogo) bootLogo.classList.add("hidden");

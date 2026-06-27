@@ -224,10 +224,10 @@ logLinks.forEach(link => {
   });
 });
 
-if (logsBack) {
+ifif (logsBack) {
   logsBack.addEventListener("click", () => {
     logPanels.forEach(panel => panel.classList.add("hidden"));
     if (logMenu) logMenu.classList.remove("hidden");
     logsBack.classList.add("hidden");
   });
-}});
+}

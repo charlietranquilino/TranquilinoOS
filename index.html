@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TranquilinoOS — Charlie Tranquilino Edition v1.0</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>TranquilinoOS — Charlie Tranquilino Edition</title>
+  <link rel="stylesheet" href="./style.css?v=30" />
 </head>
 
 <body>
@@ -97,92 +97,8 @@
     </section>
   </main>
 
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const enterBtn = document.getElementById("enter-btn");
-  const enterScreen = document.getElementById("enter-screen");
-  const mainUI = document.getElementById("main-ui");
-  const bootOutput = document.getElementById("boot-output");
-
-  enterBtn.addEventListener("click", () => {
-    enterScreen.style.display = "none";
-    bootOutput.classList.remove("hidden");
-    bootOutput.innerHTML = "";
-
-    const lines = [
-      "> Booting TranquilinoOS...",
-      "> Initializing endpoint modules...",
-      "> Loading Intune profile...",
-      "> Syncing Entra ID records...",
-      "> Mounting portfolio directory...",
-      "> Decrypting system logs...",
-      "> ROOT ACCESS: GRANTED",
-      "> SYSTEM UNLOCKED"
-    ];
-
-    let i = 0;
-
-    const interval = setInterval(() => {
-      const div = document.createElement("div");
-      div.className = "boot-line";
-      div.textContent = lines[i];
-      bootOutput.appendChild(div);
-
-      i++;
-
-      if (i >= lines.length) {
-        clearInterval(interval);
-
-        setTimeout(() => {
-          bootOutput.classList.add("hidden");
-          mainUI.classList.remove("hidden");
-        }, 700);
-      }
-    }, 300);
-  });
-
-  document.querySelectorAll(".command-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".panel").forEach(panel => panel.classList.add("hidden"));
-      document.querySelectorAll(".command-btn").forEach(b => b.classList.remove("active"));
-
-      btn.classList.add("active");
-
-      const target = document.getElementById(btn.dataset.target);
-      if (target) target.classList.remove("hidden");
-    });
-  });
-
-  const projects = {
-    win11: "[ ENTERPRISE WINDOWS 11 MIGRATION ]\n\nSupported a 1,500+ device Windows 10 to Windows 11 Enterprise migration.",
-    intune: "[ INTUNE ADMINISTRATION ]\n\nSupported enrollment, compliance, policy validation, and troubleshooting.",
-    autopilot: "[ WINDOWS AUTOPILOT ]\n\nUploaded hardware hashes, validated OOBE enrollment, and supported provisioning.",
-    entra: "[ ENTRA ID ADMINISTRATION ]\n\nSupported users, devices, MFA, and access troubleshooting.",
-    powerbi: "[ POWER BI INVENTORY DASHBOARD ]\n\nBuilt endpoint inventory dashboards for tracking and planning.",
-    abm: "[ APPLE BUSINESS MANAGER ]\n\nSupported ABM, Apple Configurator, iPad enrollment, and activation lock workflows.",
-    meraki: "[ CISCO MERAKI ]\n\nSupported VLANs, switch ports, PoE, VPN, and connectivity.",
-    printerlogic: "[ PRINTERLOGIC ]\n\nSupported printer deployment, scan-to-email, drivers, and endpoint access."
-  };
-
-  document.querySelectorAll("[data-project]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.getElementById("project-output").innerText = projects[btn.dataset.project];
-    });
-  });
-
-  const logs = {
-    champion: "[ DESKTOP ENGINEER | CHAMPION HOME BUILDERS ]\n\nSupported Intune, Autopilot, Entra ID, ABM, Meraki, PrinterLogic, Microsoft 365, and Windows 11 migration.",
-    corewell: "[ IT LIFECYCLE REFRESH | COREWELL HEALTH ]\n\nImaged, deployed, and refreshed enterprise devices using PXE / USB imaging and ServiceNow.",
-    marigo: "[ TECHNICAL OPERATIONS LEAD | MARI-GO ]\n\nSupported technical operations, documentation, Jira workflows, and AI integration.",
-    animation: "[ LEAD ANIMATION INSTRUCTOR ]\n\nLed workshops, supported students, and maintained studio operations."
-  };
-
-  document.querySelectorAll("[data-role]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.getElementById("log-output").innerText = logs[btn.dataset.role];
-    });
-  });
-});
-</script>
+  <script src="./script.js?v=30"></script>
+</body>
+</html></script>
 </body>
 </html>

@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>TranquilinoOS — Charlie Tranquilino Edition v1.0</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TranquilinoOS — Charlie Tranquilino Edition v1.0</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
   <div id="enter-screen" class="enter-screen">
     <div class="enter-box">
       <div class="enter-title">TRANQUILINO OS</div>
@@ -18,19 +17,12 @@
     </div>
   </div>
 
-  <div class="terminal">
+  <main class="terminal">
+    <div id="boot-output" class="boot-output hidden"></div>
 
-    <div id="boot-logo" class="boot-logo hidden">
-      <div class="glitch-logo"></div>
-    </div>
-
-    <div id="boot-output" class="boot-output"></div>
-
-    <div id="main-ui" class="main-ui hidden">
-
+    <section id="main-ui" class="main-ui hidden">
       <div class="terminal-line">
-        <span class="prompt">&gt;</span> System Unlocked. Welcome to
-        <span class="accent">TranquilinoOS</span>.
+        <span class="prompt">&gt;</span> System Unlocked. Welcome to <span class="accent">TranquilinoOS</span>.
       </div>
 
       <div class="terminal-line">
@@ -40,42 +32,36 @@
       <div class="command-list">
         <button class="command-btn" data-target="summary">Summary</button>
         <button class="command-btn" data-target="modules">Modules</button>
-        <button class="command-btn" data-target="processes">Portfolio</button>
+        <button class="command-btn" data-target="portfolio">Portfolio</button>
         <button class="command-btn" data-target="logs">Logs</button>
         <button class="command-btn" data-target="contact">Contact</button>
       </div>
 
       <div id="summary" class="panel hidden">
         <div class="panel-title">[ SUMMARY ]</div>
-
-        <div class="folder-list">
-          <div class="folder-btn static-card">
-            Endpoint & IT Operations professional specializing in endpoint lifecycle management,
-            device provisioning, identity administration, and enterprise support across multi-site
-            environments.
-            <br><br>
-            Experienced with Microsoft Intune, Windows Autopilot, Entra ID, Active Directory,
-            Apple Business Manager, Cisco Meraki, PrinterLogic, and enterprise deployments.
-          </div>
+        <div class="static-card">
+          Endpoint & IT Operations professional specializing in endpoint lifecycle management,
+          device provisioning, identity administration, and enterprise support across multi-site environments.
+          <br><br>
+          Experienced with Microsoft Intune, Windows Autopilot, Entra ID, Active Directory,
+          Apple Business Manager, Cisco Meraki, PrinterLogic, Microsoft 365, and enterprise deployments.
         </div>
       </div>
 
       <div id="modules" class="panel hidden">
         <div class="panel-title">[ MODULES ]</div>
-
         <div class="folder-list">
-          <div class="folder-btn static-card">&gt; Endpoint Management — Intune, Azure AD, Windows Autopilot, ABM, DEM, PrinterLogic</div>
-          <div class="folder-btn static-card">&gt; Directory Services — Active Directory, Group Policy, User Administration</div>
-          <div class="folder-btn static-card">&gt; SaaS Administration — Adobe Admin, 8x8, Freshservice, ServiceNow</div>
-          <div class="folder-btn static-card">&gt; Networking — Cisco Meraki, VLANs, PoE</div>
-          <div class="folder-btn static-card">&gt; Hardware Lifecycle — Imaging, Provisioning, Asset Management</div>
-          <div class="folder-btn static-card">&gt; Identity & Security — MFA, Compliance</div>
+          <div class="static-card">&gt; Endpoint Management — Intune, Entra ID, Autopilot, ABM, DEM, PrinterLogic</div>
+          <div class="static-card">&gt; Directory Services — Active Directory, Group Policy, User Administration</div>
+          <div class="static-card">&gt; SaaS Administration — Adobe Admin, 8x8, Freshservice, ServiceNow</div>
+          <div class="static-card">&gt; Networking — Cisco Meraki, VLANs, PoE, VPN</div>
+          <div class="static-card">&gt; Hardware Lifecycle — Imaging, PXE, Provisioning, Asset Management</div>
+          <div class="static-card">&gt; Identity & Security — MFA, Compliance, Endpoint Validation</div>
         </div>
       </div>
 
-      <div id="processes" class="panel hidden">
+      <div id="portfolio" class="panel hidden">
         <div class="panel-title">[ PORTFOLIO ]</div>
-
         <div class="folder-list">
           <button class="folder-btn" data-project="win11">&gt; Enterprise Windows 11 Migration</button>
           <button class="folder-btn" data-project="intune">&gt; Intune Administration</button>
@@ -86,40 +72,31 @@
           <button class="folder-btn" data-project="meraki">&gt; Cisco Meraki</button>
           <button class="folder-btn" data-project="printerlogic">&gt; PrinterLogic</button>
         </div>
-
-        <div id="project-output" class="project-output">
-          Select a project to view details.
-        </div>
+        <div id="project-output" class="project-output">Select a project to view details.</div>
       </div>
 
       <div id="logs" class="panel hidden">
         <div class="panel-title">[ SYSTEM LOGS ]</div>
-
         <div class="folder-list">
-          <button class="folder-btn log-link" data-role="helpdesk">&gt; Desktop Engineer | Champion Home Builders</button>
-          <button class="folder-btn log-link" data-role="techops">&gt; Technical Operations Lead | Mari-Go</button>
-          <button class="folder-btn log-link" data-role="lifecycle">&gt; IT Lifecycle Refresh | Corewell Health</button>
-          <button class="folder-btn log-link" data-role="animation">&gt; Lead Animation Instructor</button>
+          <button class="folder-btn" data-role="champion">&gt; Desktop Engineer | Champion Home Builders</button>
+          <button class="folder-btn" data-role="corewell">&gt; IT Lifecycle Refresh | Corewell Health</button>
+          <button class="folder-btn" data-role="marigo">&gt; Technical Operations Lead | Mari-Go</button>
+          <button class="folder-btn" data-role="animation">&gt; Lead Animation Instructor</button>
         </div>
-
-        <div id="log-output" class="project-output">
-          Select a log entry.
-        </div>
+        <div id="log-output" class="project-output">Select a log entry.</div>
       </div>
 
-            <div id="contact" class="panel hidden">
+      <div id="contact" class="panel hidden">
         <div class="panel-title">[ CONTACT ]</div>
-
         <div class="folder-list">
-          <div class="folder-btn static-card">&gt; Charlie Tranquilino</div>
-          <div class="folder-btn static-card">&gt; Ctranq.it@gmail.com</div>
-          <div class="folder-btn static-card">&gt; linkedin.com/in/charlie-tranquilino</div>
+          <div class="static-card">&gt; Charlie Tranquilino</div>
+          <div class="static-card">&gt; Ctranq.it@gmail.com</div>
+          <div class="static-card">&gt; linkedin.com/in/charlie-tranquilino</div>
         </div>
       </div>
-
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
-</html>
+</html></html>

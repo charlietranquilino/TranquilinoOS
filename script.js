@@ -1,4 +1,3 @@
-alert("script is connected");
 document.addEventListener("DOMContentLoaded", () => {
   const enterBtn = document.getElementById("enter-btn");
   const enterScreen = document.getElementById("enter-screen");
@@ -14,18 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
     bootOutput.appendChild(line);
     bootOutput.scrollTop = bootOutput.scrollHeight;
 
-    while (bootOutput.children.length > 60) {
+    while (bootOutput.children.length > 65) {
       bootOutput.removeChild(bootOutput.firstChild);
     }
   }
 
-  async function typeLine(text, speed = 8) {
+  async function typeLine(text, speed = 5) {
     const line = document.createElement("div");
     line.className = "boot-line";
     bootOutput.appendChild(line);
 
     for (let i = 0; i <= text.length; i++) {
-line.textContent = text.substring(0, i) + "▋";
+      line.textContent = text.substring(0, i) + "▋";
       bootOutput.scrollTop = bootOutput.scrollHeight;
       await wait(speed);
     }
@@ -39,47 +38,59 @@ line.textContent = text.substring(0, i) + "▋";
     bootOutput.classList.remove("hidden");
     bootOutput.innerHTML = "";
 
-    const bootSteps = [
-      "[OK] Loading endpoint_support_engine.kext",
-      "[OK] Injecting Intune provisioning module",
-      "[OK] Syncing Windows Autopilot profile",
-      "[OK] Mapping Entra ID records",
-      "[OK] Validating Microsoft 365 services",
-      "[OK] Opening Meraki switch telemetry",
-      "[OK] Linking PrinterLogic driver table",
-      "[OK] Loading ABM enrollment profile",
-      "[OK] Decrypting Champion Homes logs",
-      "[OK] Decrypting Corewell Health logs",
-      "[SCAN] Checking endpoint compliance",
-      "[SCAN] Enumerating portfolio modules",
-      "[WARN] Legacy cache detected... retrying",
-      "[OK] Building UI command shell"
+    const commands = [
+      "nmap -sV tranquilino.local --open",
+      "ssh root@tranquilino-os",
+      "decrypt --target career_snapshot.db",
+      "inject endpoint_support_engine.kext",
+      "mount /portfolio/index",
+      "scan --intune --entra --autopilot",
+      "bypass legacy_profile_cache.lock",
+      "elevate --role endpoint_admin",
+      "load modules summary portfolio logs contact",
+      "unlock --session Charlie_Tranquilino"
+    ];
+
+    const responses = [
+      "[OK] Kernel accepted",
+      "[OK] Intune module loaded",
+      "[OK] Autopilot profile synced",
+      "[OK] Entra records mapped",
+      "[OK] ABM enrollment profile mounted",
+      "[OK] Meraki telemetry linked",
+      "[OK] PrinterLogic table loaded",
+      "[WARN] Legacy cache detected",
+      "[SCAN] Endpoint compliance verified",
+      "[ACCESS] Privilege escalation successful",
+      "[ROOT] TranquilinoOS unlocked"
     ];
 
     addLine("> Booting TranquilinoOS...");
-    await wait(300);
+    await wait(250);
     addLine("> Initializing exploit chain...");
-    await wait(300);
+    await wait(250);
     addLine("> Elevating terminal session...");
-    await wait(300);
+    await wait(250);
     addLine("");
 
-    for (let i = 0; i < 45; i++) {
-      const step = bootSteps[Math.floor(Math.random() * bootSteps.length)];
+    for (let i = 0; i < 55; i++) {
+      const cmd = commands[Math.floor(Math.random() * commands.length)];
+      const res = responses[Math.floor(Math.random() * responses.length)];
       const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
-      const mem = Math.floor(Math.random() * 9999);
 
-      await typeLine(`root@tranquilino:~$ ${step} :: 0x${hex} :: mem_${mem}`, 5);
-      await wait(70);
+      await typeLine("root@tranquilino:~$ " + cmd, 4);
+      await wait(45);
+      addLine(res + " :: 0x" + hex);
+      await wait(55);
     }
 
     addLine("");
-    await typeLine("root@tranquilino:~$ sudo unlock-system --force", 9);
-    await wait(350);
+    await typeLine("root@tranquilino:~$ sudo unlock-system --force", 7);
+    await wait(300);
     addLine("> FIREWALL RESPONSE: FAILED");
-    await wait(350);
+    await wait(300);
     addLine("> PRIVILEGE ESCALATION: SUCCESS");
-    await wait(350);
+    await wait(300);
     addLine("> ROOT ACCESS: GRANTED");
     await wait(500);
     addLine("> SYSTEM UNLOCKED");
@@ -132,4 +143,4 @@ line.textContent = text.substring(0, i) + "▋";
       document.getElementById("log-output").innerText = logs[btn.dataset.role];
     });
   });
-});};};
+});});};};

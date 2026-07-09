@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     bootOutput.appendChild(line);
 
     for (let i = 0; i <= text.length; i++) {
-      line.textContent = text.substring(0, i) + "▋";
+line.textContent = text.substring(0, i) + "▋";
       bootOutput.scrollTop = bootOutput.scrollHeight;
       await wait(speed);
     }

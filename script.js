@@ -1,3 +1,4 @@
+alert("script is connected");
 document.addEventListener("DOMContentLoaded", () => {
   const enterBtn = document.getElementById("enter-btn");
   const enterScreen = document.getElementById("enter-screen");
